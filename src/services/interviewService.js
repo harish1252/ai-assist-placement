@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/interview";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/interview`;
 
 const getAuthHeader = () => {
   const token = localStorage.getItem("token");
@@ -16,7 +16,7 @@ export const toggleQuestion = async (categoryId, questionId) => {
   const response = await axios.patch(
     `${API_URL}/${categoryId}/${questionId}`,
     {},
-    getAuthHeader()
+    getAuthHeader(),
   );
   return response.data; // updated array of categories
-}; 
+};
